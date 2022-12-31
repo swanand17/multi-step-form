@@ -1,0 +1,193 @@
+<main class="main-container">
+  <div class="mobile-background-p1 full-width">
+    <div class="mobile-stepper-container">
+      <mat-stepper orientation="horizontal" #mobileFormStepper [linear]="isLinear" (selectionChange)="stepperChange($event.selectedIndex, $event)">
+        <mat-step [stepControl]="personalInfoForm" [completed]="false" [editable]="!finalDetailsSubmitted">
+        </mat-step>
+        <mat-step [stepControl]="planForm" [completed]="false" [editable]="!finalDetailsSubmitted">
+        </mat-step>
+        <mat-step [stepControl]="addOnForm" [completed]="false" [editable]="!finalDetailsSubmitted">
+        </mat-step>
+        <mat-step [completed]="false" [editable]="!finalDetailsSubmitted">
+        </mat-step>
+      </mat-stepper>   
+    </div>
+  </div>
+  <div class="mobile-background-p2 full-width"></div>
+  <mat-card>
+    <mat-card-content>
+      <div class="stepper-container">
+        <mat-vertical-stepper #formStepper [linear]="isLinear" (selectionChange)="stepperChange($event.selectedIndex, $event)">
+          <mat-step [stepControl]="personalInfoForm" [completed]="false" [editable]="!finalDetailsSubmitted">
+            <ng-template matStepLabel>
+              <p>Step 1</p>
+              <h3>YOUR INFO</h3>
+            </ng-template>
+          </mat-step>
+          <mat-step [stepControl]="planForm" [completed]="false" [editable]="!finalDetailsSubmitted">
+            <ng-template matStepLabel>              
+              <p>Step 2</p>
+              <h3>SELECT PLAN</h3>
+            </ng-template>
+          </mat-step>
+          <mat-step [stepControl]="addOnForm" [completed]="false" [editable]="!finalDetailsSubmitted">
+            <ng-template matStepLabel>             
+              <p>Step 3</p>
+              <h3>ADD-ONS</h3>
+            </ng-template>
+          </mat-step>
+          <mat-step [completed]="false" [editable]="!finalDetailsSubmitted">
+            <ng-template matStepLabel>             
+              <p>Step 4</p>
+              <h3>SUMMARY</h3>
+            </ng-template>
+          </mat-step>
+        </mat-vertical-stepper>   
+      </div>       
+      <div class="form-container full-width full-height">
+        <!-- (ngSubmit)="submitForm(formStepper)" -->
+        <form *ngIf="stepperChange(0)" [formGroup]="personalInfoForm" class="form full-width full-height">
+          <div class="form-header">
+            <h1>Personal info</h1>
+            <p>Please provide your name, email address, and phone number.</p>
+          </div>
+          <div class="form-body personalInfoForm">
+            
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Name</mat-label>
+              <input matInput type="text" formControlName="nameFormControl" required>
+              <mat-error *ngIf="personalInfoForm.get('nameFormControl')?.hasError('required')">This field is required</mat-error>
+            </mat-form-field>
+    
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Email</mat-label>
+              <input matInput formControlName="emailFormControl" required>
+              <mat-error *ngIf="personalInfoForm.get('emailFormControl')?.hasError('required')">This field is required</mat-error>
+              <mat-error *ngIf="personalInfoForm.get('emailFormControl')?.hasError('email')">Please enter a valid email e.g. janeDoe@xyz.com</mat-error>
+            </mat-form-field>
+    
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Phone Number</mat-label>
+              <input matInput formControlName="phoneNumberFormControl" minLength="10" maxLength="10" required>
+              <mat-error *ngIf="personalInfoForm.get('phoneNumberFormControl')?.hasError('required')">This field is required</mat-error>
+              <mat-error *ngIf="personalInfoForm.get('phoneNumberFormControl')?.hasError('pattern')">Please enter a valid phone number</mat-error>
+              <mat-error *ngIf="!personalInfoForm.get('phoneNumberFormControl')?.hasError('pattern') &&personalInfoForm.get('phoneNumberFormControl')?.hasError('minlength')">Phone number should be 10 digits long</mat-error>
+            </mat-form-field>
+          </div>
+          <div class="form-actions">
+            <button type="button" mat-button color="primary" [ngStyle]="{'visibility': formIndex === 0 ? 'hidden' : 'visible' }">
+              Go Back
+            </button>
+            <button type="button" mat-raised-button color="primary" (click)="submitForm(formStepper)">Next Step</button>
+          </div>
+        </form>
+        <form *ngIf="stepperChange(1)" [formGroup]="planForm" (ngSubmit)="submitForm(formStepper)" class="form full-width full-height">
+          <div class="form-header">
+            <h1>Select your plan</h1>
+            <p>You have the option of monthly or yearly billing.</p>
+          </div>
+          <div class="form-body plan-type">
+            <mat-button-toggle-group formControlName="planTypeFormControl" class="full-width" required>
+              <ng-container *ngFor="let plan of planOptions">
+                <mat-button-toggle [value]="plan">
+                  <div class="plan">
+                    <img class="plan-icon" [src]="plan.icon">
+                    <div class="plan-details">
+                      <span class="plan-details--title">{{ plan.title }}</span>
+                      <span class="plan-details--price" *ngIf="!planForm.get('planModeFormControl')?.value">+${{ plan.monthlyPrice }}/mo</span>
+                      <span class="plan-details--price" *ngIf="planForm.get('planModeFormControl')?.value">+${{ plan.yearlyPrice }}/yr</span>
+                      <span class="plan-details--offer" *ngIf="planForm.get('planModeFormControl')?.value">{{ plan.offer }}</span>
+                    </div>
+                  </div>
+                </mat-button-toggle>
+              </ng-container>
+            </mat-button-toggle-group>
+            <div class="plan-mode full-width">
+              <span [ngClass]="{'plan-mode--selected': !planForm.get('planModeFormControl')?.value}">Monthly</span>
+              <mat-slide-toggle formControlName="planModeFormControl"></mat-slide-toggle>
+              <span [ngClass]="{'plan-mode--selected': planForm.get('planModeFormControl')?.value}">Yearly</span>
+            </div>     
+          </div>
+          <div class="form-actions">
+            <button type="button" mat-button color="primary" (click)="previousForm(formStepper)">
+              Go Back
+            </button>
+            <button type="submit" mat-raised-button color="primary">Next Step</button>
+          </div>
+        </form> 
+        <form *ngIf="stepperChange(2)" [formGroup]="addOnForm" (ngSubmit)="submitForm(formStepper)" class="form full-width full-height">
+          <div class="form-header">
+            <h1>Pick add-ons</h1>
+            <p>Add-ons help enhance your gaming experience.</p>
+          </div>
+          <div class="form-body">
+            <section class="addOn-section full-width">
+              <ng-container *ngFor="let addOn of addOnOptions">
+                <mat-checkbox [formControlName]="addOn.formControl" class="addOn-checkbox full-width">
+                  <div>
+                    <p class="addOn-title">{{ addOn.title }}</p>
+                    <p class="addOn-feature">{{ addOn.feature }}</p>
+                  </div>
+                  <span *ngIf="!planForm.get('planModeFormControl')?.value">+${{ addOn.monthlyPrice }}/mo</span>
+                  <span *ngIf="planForm.get('planModeFormControl')?.value">+${{ addOn.yearlyPrice }}/yr</span>
+                </mat-checkbox>
+              </ng-container>
+            </section>
+          </div>
+          <div class="form-actions">
+            <button type="button" mat-button color="primary" (click)="previousForm(formStepper)">Go Back</button>
+            <button type="submit" mat-raised-button color="primary">Next Step</button>
+          </div>
+        </form> 
+        <form *ngIf="stepperChange(3) && !finalDetailsSubmitted" class="form full-width full-height">
+          <div class="form-header">
+            <h1>Finishing up</h1>
+            <p>Double-check everything looks OK before confirming.</p>
+          </div>
+          <div class="form-body">
+            <div class="full-width">
+              <div class="final-details-container full-width">
+                <div class="text-space-price">
+                  <div>
+                    <p class="plan-title">{{ finalDetails.planType.title }} ({{ finalDetails.planMode ? 'Yearly' : 'Monthly' }})</p>
+                    <p class="plan-change"><a>Change</a></p>
+                  </div>
+                  <span  class="plan-title">${{ finalDetails.planMode ? finalDetails.planType.yearlyPrice + '/yr' : finalDetails.planType.monthlyPrice + '/mo'}}</span>
+                </div>
+                <mat-divider *ngIf="finalAddOnList.length > 0" inset="true"></mat-divider>
+                <div class="addon-container full-width">
+                  <div class="text-space-price  full-width" *ngFor="let addon of finalAddOnList">
+                    <p class="addOn-title">{{ addon.title }}</p>
+                    <p class="addOn-price">${{ finalDetails.planMode ? addon.yearlyPrice + '/yr' : addon.monthlyPrice + '/mo' }}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="total-container text-space-price full-width">
+                <p class="total-title">Total ({{ finalDetails.planMode ? 'per year'  : 'per month' }})</p>
+                <p class="total-price">${{ finalDetails.planMode ? finalDetails.totalPrice + '/yr' : finalDetails.totalPrice + '/mo' }}</p>
+              </div>
+            </div>
+          </div>
+          <div class="form-actions">
+            <button type="button" mat-button color="primary" (click)="previousForm(formStepper)">Go Back</button>
+            <button type="button" mat-raised-button (click)="confirmDetails()" color="primary">Confirm</button>
+          </div>
+        </form> 
+        <div *ngIf="finalDetailsSubmitted" class="thanks-container full-width full-height">
+          <img src="../../assets/images/icon-thank-you.svg" alt="thank you img">
+          <div class="thanks-content">
+            <h1 class="thanks-content--title">Thank you!</h1>
+            <p class="thanks-content--message">Thanks for confirming your subscription! We hope you have fun 
+              using our platform. If you ever need support, please feel free 
+              to email us at support@loremgaming.com.</p>
+            </div>
+          </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <div [ngStyle]="{'visibility': finalDetailsSubmitted ? 'hidden' : 'visible' }" class="mobile-form-actions mobile-background-p3 full-width">
+    <button type="button" [ngStyle]="{'visibility': formIndex === 0 || finalDetailsSubmitted ? 'hidden' : 'visible' }" mat-button color="primary" (click)="previousForm(mobileFormStepper)">Go Back</button>
+    <button type="submit" *ngIf="this.formIndex !== 3 ? true : false " mat-raised-button color="primary" (click)="submitForm(mobileFormStepper)">Next Step</button>
+    <button type="submit" *ngIf="this.formIndex !== 3 ? false : true " mat-raised-button color="primary" (click)="confirmDetails()">Confirm</button>
+  </div>
+</main>

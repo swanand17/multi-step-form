@@ -1,0 +1,266 @@
+.main-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.main-container .mat-card {
+  width: 55%;
+  height: 80%;
+}
+
+.mat-card-content {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+.mat-card-content .stepper-container {
+  height: 100%;
+}
+
+.mat-stepper-vertical {
+  background-color: transparent;
+}
+.mat-stepper-vertical ::ng-deep .mat-step-header {
+  background-color: transparent;
+}
+.mat-stepper-vertical ::ng-deep .mat-step-header .mat-step-label {
+  color: hsl(0deg, 0%, 100%);
+}
+.mat-stepper-vertical ::ng-deep .mat-step-header .mat-step-icon {
+  border: 1.5px solid hsl(229deg, 24%, 87%) !important;
+  background-color: hsl(243deg, 100%, 62%) !important;
+}
+.mat-stepper-vertical ::ng-deep .mat-step-header .mat-step-icon-selected {
+  color: hsl(213deg, 96%, 18%);
+  background-color: hsl(229deg, 24%, 87%) !important;
+}
+
+.stepper-container {
+  padding: 2rem;
+  background: url("../../assets/images/bg-sidebar-desktop.svg") no-repeat;
+  background-size: cover;
+  border-radius: 1.4rem;
+}
+.stepper-container ::ng-deep .mat-step-text-label * {
+  margin: 0;
+}
+
+.form-container {
+  padding-top: 3rem;
+}
+
+.form {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0 5rem;
+}
+.form-header {
+  display: flex;
+  flex: 20;
+  flex-direction: column;
+}
+.form-header > h1:first-child {
+  color: hsl(213deg, 96%, 18%);
+  font-weight: 700;
+  margin: 0 !important;
+}
+.form-header > p {
+  font-size: 1.2rem;
+  color: hsl(231deg, 11%, 63%);
+  font-weight: 500;
+}
+.form-body {
+  display: flex;
+  flex: 60;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.form-actions {
+  display: flex;
+  flex: 20;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.plan {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 12px 0px;
+  line-height: 22px !important;
+  gap: 30px 0px;
+}
+.plan-icon {
+  display: flex;
+}
+.plan-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.plan-details--title {
+  font-size: 16px;
+  color: hsl(213deg, 96%, 18%);
+}
+.plan-details--price {
+  font-size: 12px;
+  color: hsl(231deg, 11%, 63%);
+}
+.plan-details--offer {
+  font-size: 12px;
+  color: hsl(213deg, 96%, 18%);
+}
+
+.plan-type {
+  justify-content: flex-start;
+  row-gap: 20px;
+}
+
+.plan-mode {
+  background-color: hsl(231deg, 100%, 99%);
+  border-radius: 5px;
+  padding: 5px 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  -moz-column-gap: 16px;
+       column-gap: 16px;
+  color: hsl(231deg, 11%, 63%);
+}
+.plan-mode ::ng-deep .mat-slide-toggle-bar {
+  background-color: hsl(213deg, 96%, 18%);
+}
+.plan-mode ::ng-deep .mat-slide-toggle-bar .mat-slide-toggle-thumb {
+  background-color: hsl(0deg, 0%, 100%) !important;
+}
+.plan-mode--selected {
+  color: hsl(213deg, 96%, 18%);
+  font-weight: 600;
+}
+
+.addOn-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  row-gap: 15px;
+}
+
+.addOn-checkbox {
+  border: 1px solid hsl(231deg, 11%, 63%);
+  border-radius: 10px;
+}
+.addOn-checkbox ::ng-deep .mat-checkbox-layout {
+  width: 100%;
+  justify-content: flex-start;
+  padding: 15px;
+}
+.addOn-checkbox ::ng-deep .mat-checkbox-layout .mat-checkbox-inner-container {
+  margin-right: 15px;
+}
+.addOn-checkbox ::ng-deep .mat-checkbox-layout .mat-checkbox-label {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  line-height: 2px;
+}
+.addOn-checkbox ::ng-deep .mat-checkbox-layout .mat-checkbox-label .addOn-title {
+  font-weight: 500;
+  color: hsl(213deg, 96%, 18%);
+}
+.addOn-checkbox ::ng-deep .mat-checkbox-layout .mat-checkbox-label .addOn-feature {
+  font-weight: 400;
+  font-size: 12px;
+  color: hsl(231deg, 11%, 63%);
+  margin: 0px;
+}
+
+.final-details-container {
+  background-color: hsl(231deg, 100%, 99%);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  row-gap: 15px;
+  font-weight: 500;
+}
+.final-details-container .plan-title {
+  font-weight: 700;
+  color: hsl(213deg, 96%, 18%);
+}
+.final-details-container .plan-change {
+  color: hsl(231deg, 11%, 63%);
+  text-decoration: underline;
+}
+.final-details-container .addOn-title {
+  color: hsl(231deg, 11%, 63%);
+}
+.final-details-container .addOn-price {
+  color: hsl(228deg, 100%, 84%);
+}
+
+.total-container {
+  padding: 15px;
+}
+.total-container .total-title {
+  color: hsl(231deg, 11%, 63%);
+}
+.total-container .total-price {
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: hsl(243deg, 100%, 62%);
+}
+
+.text-space-price {
+  display: flex;
+  justify-content: space-between;
+}
+
+.thanks-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 5rem;
+  text-align: center;
+  row-gap: 30px;
+}
+.thanks-container .thanks-content--title {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: hsl(213deg, 96%, 18%);
+}
+.thanks-container .thanks-content--message {
+  color: hsl(231deg, 11%, 63%);
+}
+
+:host ::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background {
+  background-color: hsl(243deg, 100%, 62%) !important;
+}
+
+:host ::ng-deep .mat-button-toggle-group {
+  display: flex;
+  -moz-column-gap: 10px;
+       column-gap: 10px;
+  border: 0px;
+}
+:host ::ng-deep .mat-button-toggle-group .mat-button-toggle-label-content {
+  width: 100%;
+}
+:host ::ng-deep .mat-button-toggle-group .mat-button-toggle {
+  border: 1px solid hsl(231deg, 11%, 63%);
+  border-radius: 8px;
+  flex: 30;
+}
+:host ::ng-deep .mat-button-toggle-group .mat-button-toggle-checked {
+  background-color: #e6ebff;
+  border: 1.3px solid hsl(213deg, 96%, 18%);
+}/*# sourceMappingURL=multi-step-form.component.css.map */

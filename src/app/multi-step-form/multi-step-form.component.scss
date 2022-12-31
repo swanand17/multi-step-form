@@ -1,0 +1,479 @@
+.main-container{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .mat-card{
+    width: 55%;
+    height: 80%;
+    border-radius: 12px;
+  }
+}
+.mat-card-content{
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+
+  .stepper-container{
+    height: 100%;
+  }
+}
+.mat-stepper-vertical{
+  background-color: transparent;
+  cursor: pointer;
+ 
+  ::ng-deep .mat-step-header{
+    background-color: transparent;
+
+   .mat-step-label{
+      color: hsl(0, 0%, 100%);
+    }
+  
+    .mat-step-icon{
+      border: 1.5px solid hsl(229, 24%, 87%)  !important;
+      background-color: hsl(243, 100%, 62%) !important;
+
+      &-selected{
+        color: hsl(213, 96%, 18%);
+        background-color: hsl(229, 24%, 87%) !important;
+      }
+    }
+  }  
+}
+.stepper-container{
+  padding: 2rem;
+  background: url('../../assets/images/bg-sidebar-desktop.svg') no-repeat;
+  background-size: cover;
+  border-radius: 1.4rem;
+  width: 35%;
+
+  ::ng-deep .mat-step-text-label *{
+    margin: 0;
+  } 
+}
+.form-container{
+  padding-top: 3rem;
+  width: 65%;
+}
+.form{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0 5rem;
+
+  &-header{
+    display: flex;
+    flex: 20;
+    flex-direction: column;
+
+    & > h1:first-child{
+      color: hsl(213, 96%, 18%);
+      font-weight: 700;
+      margin: 0 !important;
+    }
+
+    & > p{
+      font-size: 1.2rem;
+      color: hsl(231, 11%, 63%);
+      font-weight: 500;
+    }
+  }
+
+  &-body{
+    display: flex;
+    flex: 60;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &-actions{
+    display: flex;
+    flex: 20;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+.personalInfoForm{
+  justify-content: flex-start;
+}
+.plan{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 12px 0px;
+  line-height: 22px !important;
+  gap: 30px 0px;
+
+  &-icon{
+    display: flex;
+  }
+
+  &-details{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    &--title{
+      font-size: 16px;
+      color: hsl(213, 96%, 18%);
+    }
+    &--price{
+      font-size: 12px;
+      color: hsl(231, 11%, 63%) ;
+    }
+    &--offer{
+      font-size: 12px;
+      color: hsl(213, 96%, 18%);
+    }
+  }
+}
+.plan-type{
+  justify-content: flex-start; 
+  row-gap: 20px;
+}
+.plan-mode{
+  background-color: hsl(231, 100%, 99%);
+  border-radius: 5px;
+  padding: 5px 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 16px;
+  color:hsl(231, 11%, 63%) ;
+
+  ::ng-deep .mat-slide-toggle-bar{
+    background-color: hsl(213, 96%, 18%);
+    
+    .mat-slide-toggle-thumb{
+      background-color: hsl(0, 0%, 100%) !important;
+    }
+  }
+
+  &--selected{
+    color: hsl(213, 96%, 18%);
+    font-weight: 600;
+  }
+}
+.addOn-section{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  row-gap: 15px;
+}
+.addOn-checkbox{
+  border: 1px solid hsl(231, 11%, 63%);
+  border-radius: 10px;
+
+  ::ng-deep .mat-checkbox-layout{
+    width: 100%;
+    justify-content: flex-start;
+    padding: 15px;
+
+    .mat-checkbox-inner-container{
+      margin-right: 0px;
+    }
+
+    .mat-checkbox-label{
+      padding-left: 15px;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      line-height: 2px;
+
+      & > div{
+        display: flex;
+        flex-direction: column;
+      }
+      .addOn-title{
+        font-weight: 500;
+        color: hsl(213, 96%, 18%);
+      }
+
+      .addOn-feature{
+        font-weight: 400;
+        font-size: 12px;
+        color: hsl(231, 11%, 63%);
+        margin: 0px;
+      }
+    }
+  }
+}
+.final-details-container{
+  background-color: hsl(231, 100%, 99%);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  row-gap: 15px;
+  font-weight: 500;
+
+  .plan-title{
+    font-weight: 700;
+    color: hsl(213, 96%, 18%);
+  }
+  .plan-change{
+    color: hsl(231, 11%, 63%);
+    text-decoration: underline;
+  }
+  .addOn-title{
+    color: hsl(231, 11%, 63%);
+  }
+  .addOn-price{
+    color: hsl(228, 100%, 84%);
+  }
+
+}
+.total-container{
+  padding: 15px;
+
+  .total-title{
+    color: hsl(231, 11%, 63%);
+  }
+
+  .total-price{
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: hsl(243, 100%, 62%);
+  }
+}
+.text-space-price{
+  display: flex;
+  justify-content: space-between;
+}
+.thanks-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 5rem;
+  text-align: center;
+  row-gap: 30px;
+
+  .thanks-content{
+    &--title{
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: hsl(213, 96%, 18%);
+    }
+  
+    &--message{
+      color: hsl(231, 11%, 63%);
+    }
+  }
+  
+}
+
+:host ::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background {
+  background-color: hsl(243, 100%, 62%) !important;
+}
+:host ::ng-deep .mat-button-toggle-group{
+  display: flex;
+  column-gap: 10px;
+  border: 0px;
+
+  .mat-button-toggle-label-content{
+    width: 100%;
+  }
+  
+  .mat-button-toggle{
+    border: 1px solid hsl(231, 11%, 63%);
+    border-radius: 8px;
+    flex: 30;
+  }
+
+  .mat-button-toggle-checked{
+    background-color: #e6ebff;
+    border: 1.3px solid hsl(213, 96%, 18%);
+  }
+}
+
+//Mobile CSS
+.mobile-background{
+  &-p1, &-p2, &-p3{
+    display: none;
+  }
+  .mobile-stepper-container{
+    display: none;
+  }
+}
+.mat-stepper-horizontal{
+  background-color: transparent !important;
+
+  ::ng-deep .mat-horizontal-stepper-header-container{
+    justify-content: center;
+    pointer-events: none;
+
+    .mat-step-header{
+
+      .mat-step-label{
+        min-width: 0;
+      }
+    
+      .mat-step-icon{
+        margin: 0;
+      }
+    }
+  }
+}
+
+:host ::ng-deep  .mat-stepper-horizontal-line{
+  display: none;
+}
+
+// Laptop - L
+@media screen and (max-width:1450px) {
+  .main-container{
+    .mat-card{
+      width: 55%;
+    }
+  }
+}
+// Laptop - S
+@media screen and (max-width:1030px) {
+  .main-container{
+    .mat-card{
+      width: 70%;
+    }
+  }
+}
+// Tablet
+@media screen and (max-width:770px) {
+  .main-container{
+    .mat-card{
+      width: 90%;
+    }
+  }
+  .stepper-container{
+    width: 40%;
+  }
+  .form-container{
+    width: 60%;
+  }
+}
+// Phone
+@media screen and (max-width:430px) {
+  :host ::ng-deep .mat-button-toggle-group{
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+  }
+  .addOn-checkbox{
+
+    ::ng-deep .mat-checkbox-layout{
+      padding: 10px;
+      
+      .mat-checkbox-inner-container{
+        margin-right: 0px;
+      }
+
+      .mat-checkbox-label{
+        padding-left: 10px;
+
+        .addOn-feature{
+          font-size: 10px;
+        }
+      }
+    }
+  }
+  .plan{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 4px 0px;
+    line-height: 18px !important;
+    gap: 0px 15px;
+    
+    &-icon{
+      margin-top: 4px;
+      width: 30px;
+    }
+  }
+  .main-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .mat-card{
+      z-index: 1;
+      position: absolute;
+      top: 70px;
+      height: auto;
+    }
+  }
+  .stepper-container{
+    display: none;
+  }
+  .mobile-stepper-container{
+    display: block;
+  }
+  .form-container{
+    z-index: 1;
+    height: 100%;
+    width: 100%;
+    padding-top: 0;
+  }
+  .form{
+    padding: 5px 10px;
+    width: 100%;
+
+    &-body{
+      font-size: 11px;
+
+      .text-space-price{
+        padding-bottom: 0px;
+      }
+    }
+
+    &-actions{
+      display: none;
+    }
+  }
+  .thanks-container{
+    padding: 0;
+    row-gap: 0;
+  
+    .thanks-content{
+      &--title{
+        margin: 15px 0px !important;
+      }
+    }
+  }
+  .mobile-background{
+    &-p1{
+      display: block;
+      z-index: 0;
+      background: url('../../assets/images/bg-sidebar-mobile.svg') no-repeat;
+      background-size: cover;
+      height: 30%;
+    }
+
+    &-p2{
+      display: block;
+      z-index: 0;
+      background-color: hsl(217, 100%, 97%);
+      height: 60%;
+    }
+
+    &-p3{
+      z-index: 0;
+      background-color: hsl(0, 0%, 100%);
+      height: 10%;
+    }
+  } 
+  .mobile-form-actions{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+  }
+}
